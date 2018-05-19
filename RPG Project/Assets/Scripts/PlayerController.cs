@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using UnityEngine.EventSystems;
 using UnityEngine;
 
 [RequireComponent( typeof( PlayerMotor ) )]
@@ -20,6 +19,11 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+
         if ( Input.GetMouseButton( 0 ) )
         {
             Ray ray = cam.ScreenPointToRay( Input.mousePosition );
